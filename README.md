@@ -1,0 +1,1 @@
+This is a small ontology project that I've been working on for a few hours. In the Applied Ontology course at U. Buffalo, the Zebra Puzzle was put forth as a challenge. I published my work here as a sample of my capabilities with Protege and building ontologies. 
