@@ -1,0 +1,1218 @@
+@prefix : <http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:> .
+@prefix MGP: <http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:> .
+
+<http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP> rdf:type owl:Ontology ;
+                                                                 owl:versionIRI <http://www.semanticweb.org/erichapsion/ontologies/21_07_2026/HondaMotoGP> ;
+                                                                 owl:imports <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl> ;
+                                                                 rdfs:comment """This is the current version of my MotoGP Reference Ontology. 
+As it stands, quite a lot of work remains to be done:
+Classes need definitions.
+IRIs need to be assigned.
+Motorcycle parts need to be added.
+Ways parts can fail need to be added. 
+
+The project was inspired by the crash at the Catalunya Grand Prix in which Johann Zarco was injured (as macabre as 'inspiration' sounds). The hope is that this ontology, in a mature version, can serve as a way of keeping track of the nature and rate of accidents in MotoGP (and other venues), making the sport safer for riders.""" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000412
+<http://purl.obolibrary.org/obo/IAO_0000412> rdf:type owl:AnnotationProperty ;
+                                             rdfs:label "imported from"@en .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+<http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
+
+
+###  https://www.commoncoreontologies.org/ont00001754
+<https://www.commoncoreontologies.org/ont00001754> rdf:type owl:AnnotationProperty ;
+                                                   rdfs:label "definition source"@en .
+
+
+###  https://www.commoncoreontologies.org/ont00001760
+<https://www.commoncoreontologies.org/ont00001760> rdf:type owl:AnnotationProperty ;
+                                                   rdfs:label "is curated in ontology"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000196
+<http://purl.obolibrary.org/obo/BFO_0000196> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "053-BFO" ;
+                                             rdfs:label "bearer of"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "b bearer of c =Def c inheres in b"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "A patch of ink is the bearer of a colour quality; an organism is the bearer of a temperature quality"@en .
+
+
+###  https://www.commoncoreontologies.org/ont00001813
+<https://www.commoncoreontologies.org/ont00001813> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                   rdfs:domain <https://www.commoncoreontologies.org/ont00001017> ;
+                                                   rdfs:range <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "uses"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x uses y iff x is an instance of an Agent and y is an instance of a Material Entity, such that both x and y participate in some instance of a Process wherein x attempts to accomplish a goal by manipulating, deploying, or leveraging some attribute of y."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001819
+<https://www.commoncoreontologies.org/ont00001819> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                   rdfs:domain <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                                   rdfs:range <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "caused by"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "x caused by y =Def y is cause of x"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ExtendedRelationOntology"^^xsd:anyURI .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/BFO_0000016
+<http://purl.obolibrary.org/obo/BFO_0000016> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000017> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "062-BFO" ;
+                                             rdfs:label "disposition"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#altLabel> "internally-grounded realizable entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) A disposition b is a realizable entity such that if b ceases to exist then its bearer is physically changed & b's realization occurs when and because this bearer is in some special physical circumstances & this realization occurs in virtue of the bearer's physical make-up"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "An atom of element X has the disposition to decay to an atom of element Y; the cell wall is disposed to transport cellular material through endocytosis and exocytosis; certain people have a predisposition to colon cancer; children are innately disposed to categorize objects in certain ways"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000029
+<http://purl.obolibrary.org/obo/BFO_0000029> rdf:type owl:Class ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "034-BFO" ;
+                                             rdfs:label "site"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) A site is a three-dimensional immaterial entity whose boundaries either (partially or wholly) coincide with the boundaries of one or more material entities or have locations determined in relation to some material entity"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "A hole in a portion of cheese; a rabbit hole; the Grand Canyon; the Piazza San Marco; the kangaroo-joey-containing hole of a kangaroo pouch; your left nostril (a fiat part - the opening - of your left nasal cavity); the lumen of your gut; the hold of a ship; the interior of the trunk of your car; hole in an engineered floor joist"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000034
+<http://purl.obolibrary.org/obo/BFO_0000034> rdf:type owl:Class ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "064-BFO" ;
+                                             rdfs:label "function"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "(Elucidation) A function is a disposition that exists in virtue of its bearer's physical make-up & this physical make-up is something the bearer possesses because it came into being either through evolution (in the case of natural biological entities) or through intentional design (in the case of artefacts) in order to realize processes of a certain sort"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "The function of a hammer to drive in nails; the function of a heart pacemaker to regulate the beating of a heart through electricity"@en .
+
+
+###  http://purl.obolibrary.org/obo/BFO_0000035
+<http://purl.obolibrary.org/obo/BFO_0000035> rdf:type owl:Class ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                             <http://purl.org/dc/elements/1.1/identifier> "084-BFO" ;
+                                             rdfs:label "process boundary"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "p is a process boundary =Def p is a temporal part of a process & p has no proper temporal parts"@en ;
+                                             <http://www.w3.org/2004/02/skos/core#example> "The boundary between the 2nd and 3rd year of your life"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP003183e2_e36c_49ee_9658_72f4763210b3MGP
+:MGP003183e2_e36c_49ee_9658_72f4763210b3MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom :MGP9f20f6c1_1c22_4e04_89ce_a2b2927ab6edMGP
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Piston Shaft"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP0336b4ba_eee4_4ec0_a62f_222c6cc19f17MGP
+:MGP0336b4ba_eee4_4ec0_a62f_222c6cc19f17MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Drive System"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP0395118d_c78b_4e6b_9f07_5838c830091bMGP
+:MGP0395118d_c78b_4e6b_9f07_5838c830091bMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGPb6c4e65d_214a_4501_8960_e46bf3af16abMGP ;
+                                            rdfs:label "Double Brembo Carbon Disc Brake"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP051737cd_f6b5_406c_9369_d1d65d49d0bbMGP
+:MGP051737cd_f6b5_406c_9369_d1d65d49d0bbMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom :MGPf28409ee_2da5_45eb_9bd7_cda2fa2361adMGP
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001027> ;
+                                            rdfs:label "Wing"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP0630e5bb_97b7_4086_8fde_3420cef941a6MGP
+:MGP0630e5bb_97b7_4086_8fde_3420cef941a6MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                            rdfs:label "Weather"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP076941e9_67c9_43bd_8c06_341263aef7adMGP
+:MGP076941e9_67c9_43bd_8c06_341263aef7adMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000009> ;
+                                            rdfs:label "Lean Angle"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP0fc9e2d9_d690_4d84_89f0_79be8327ca25MGP
+:MGP0fc9e2d9_d690_4d84_89f0_79be8327ca25MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Back Right Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP1b2507d2_0f3c_4857_ad22_e069cca1b306MGP
+:MGP1b2507d2_0f3c_4857_ad22_e069cca1b306MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001070> ;
+                                            rdfs:label "Turbulence"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP23a71d76_23b9_4e39_a952_6e69d9139366MGP
+:MGP23a71d76_23b9_4e39_a952_6e69d9139366MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Fuel Tank"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP2551289c_b6f8_4c8e_8646_6cf8bac212feMGP
+:MGP2551289c_b6f8_4c8e_8646_6cf8bac212feMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                            rdfs:label "Lap"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP274a4d9d_0175_4110_9917_d43b7a6fd333MGP
+:MGP274a4d9d_0175_4110_9917_d43b7a6fd333MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000877> ;
+                                            rdfs:label "Rear Brake Pedal"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP3040ec50_a981_4692_80db_18d84cae7c90MGP
+:MGP3040ec50_a981_4692_80db_18d84cae7c90MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000318> ;
+                                            rdfs:label "Injury"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP3310576a_5176_4e4e_87a8_5646b9308375MGP
+:MGP3310576a_5176_4e4e_87a8_5646b9308375MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP57573663_5ac6_47f1_b262_a94a1ad20492MGP ;
+                                            rdfs:label "Collision"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP3a7200a5_3250_4f80_849e_a276bacfdad7MGP
+:MGP3a7200a5_3250_4f80_849e_a276bacfdad7MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom :MGP0336b4ba_eee4_4ec0_a62f_222c6cc19f17MGP
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Transmission"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP3fd9593f_1f93_438c_9f9d_850253c857b7MGP
+:MGP3fd9593f_1f93_438c_9f9d_850253c857b7MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001006> ;
+                                            rdfs:label "Motorcycle Rider"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP4619f0c5_2cc1_49ea_9fa6_0ad5c5b978ceMGP
+:MGP4619f0c5_2cc1_49ea_9fa6_0ad5c5b978ceMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Fuel"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP4f24cf8e_f5b6_4a09_94c5_0a34e5c128b5MGP
+:MGP4f24cf8e_f5b6_4a09_94c5_0a34e5c128b5MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP94e035b7_ddc2_4f6b_931a_13513d2aef09MGP ;
+                                            rdfs:label "Motor Oil"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP560420d0_0c5c_4523_bb20_9107853bf927MGP
+:MGP560420d0_0c5c_4523_bb20_9107853bf927MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
+                                            rdfs:label "Racetrack Site"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP57573663_5ac6_47f1_b262_a94a1ad20492MGP
+:MGP57573663_5ac6_47f1_b262_a94a1ad20492MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                            rdfs:label "Accident"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP58a1420f_e04e_4576_8bb0_e76a71733b12MGP
+:MGP58a1420f_e04e_4576_8bb0_e76a71733b12MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019> ;
+                                            rdfs:label "Tyre Wear"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP5bf0ae93_be9d_43ec_bc86_4cad9e305cf3MGP
+:MGP5bf0ae93_be9d_43ec_bc86_4cad9e305cf3MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP3040ec50_a981_4692_80db_18d84cae7c90MGP ;
+                                            rdfs:label "Foot Injury"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP695ba81d_92ad_4f0b_8d79_88bcb3e6d244MGP
+:MGP695ba81d_92ad_4f0b_8d79_88bcb3e6d244MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Brake Disc"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP6c8180e1_6500_43ae_aed4_6bcbdbccf82bMGP
+:MGP6c8180e1_6500_43ae_aed4_6bcbdbccf82bMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000723> ;
+                                            rdfs:label "Throttle"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP6d31f1e8_04d2_469c_bbf7_051dbf3f6aa9MGP
+:MGP6d31f1e8_04d2_469c_bbf7_051dbf3f6aa9MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP57573663_5ac6_47f1_b262_a94a1ad20492MGP ;
+                                            rdfs:label "Part Failure"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP716eabb6_6ea7_4294_8fc6_ec1726ad9462MGP
+:MGP716eabb6_6ea7_4294_8fc6_ec1726ad9462MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                                            rdfs:label "Act of Braking"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7185004c_b39f_431f_9ece_579a4f226d82MGP
+:MGP7185004c_b39f_431f_9ece_579a4f226d82MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGPfa1a4f0a_5f7b_4bef_856b_b36b3bc006dfMGP ;
+                                            rdfs:label "Steel Brack Disc"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP724a9aab_ca16_4267_8017_c1f3f10db0c4MGP
+:MGP724a9aab_ca16_4267_8017_c1f3f10db0c4MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Caliper"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP76b89b1c_935c_4067_8920_bd5851d6e370MGP
+:MGP76b89b1c_935c_4067_8920_bd5851d6e370MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP7f7e9823_87a7_4ff1_a923_34671d4ce8e3MGP ;
+                                            rdfs:label "Soft Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP775ce641_9491_4cad_840c_e6a75c14b447MGP
+:MGP775ce641_9491_4cad_840c_e6a75c14b447MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                            rdfs:label "Race"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7aa6f39c_57d3_4ee9_af0f_0b16201e88f9MGP
+:MGP7aa6f39c_57d3_4ee9_af0f_0b16201e88f9MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Rear Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7e87105c_1fba_4b19_aa25_30f9cee27be2MGP
+:MGP7e87105c_1fba_4b19_aa25_30f9cee27be2MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Tyre_Geometry"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7ecd1f7a_dfcc_48a4_80e2_244d20bd96e7MGP
+:MGP7ecd1f7a_dfcc_48a4_80e2_244d20bd96e7MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000210>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Piston"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7f7e9823_87a7_4ff1_a923_34671d4ce8e3MGP
+:MGP7f7e9823_87a7_4ff1_a923_34671d4ce8e3MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP ;
+                                            rdfs:label "Slick Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP93c0c3cd_9b70_40c3_9f68_460c2938e62dMGP
+:MGP93c0c3cd_9b70_40c3_9f68_460c2938e62dMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001019> ;
+                                            rdfs:label "Handlebar"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP94e035b7_ddc2_4f6b_931a_13513d2aef09MGP
+:MGP94e035b7_ddc2_4f6b_931a_13513d2aef09MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Lubricant"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP98c70f90_9bc8_453a_86b8_f25cbaf1bf97MGP
+:MGP98c70f90_9bc8_453a_86b8_f25cbaf1bf97MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001083> ;
+                                            rdfs:label "Liquid Cooled Four Stroke DOHC 4 Valve V-4"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP99623dc1_858b_41fa_9595_7dfb9793c002MGP
+:MGP99623dc1_858b_41fa_9595_7dfb9793c002MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000441> ;
+                                            rdfs:label "Track Tempurature"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP9b3be9d0_2ae6_4622_9503_00084e6a1404MGP
+:MGP9b3be9d0_2ae6_4622_9503_00084e6a1404MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP ;
+                                            rdfs:label "Rain Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP9f20f6c1_1c22_4e04_89ce_a2b2927ab6edMGP
+:MGP9f20f6c1_1c22_4e04_89ce_a2b2927ab6edMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom :MGP7ecd1f7a_dfcc_48a4_80e2_244d20bd96e7MGP
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Piston Head"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP9f239fd8_11b8_4aef_9287_93a0a3530ab7MGP
+:MGP9f239fd8_11b8_4aef_9287_93a0a3530ab7MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Fuel Injector"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP9f880362_df06_4556_bcc8_027ff7062eb4MGP
+:MGP9f880362_df06_4556_bcc8_027ff7062eb4MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP57573663_5ac6_47f1_b262_a94a1ad20492MGP ;
+                                            rdfs:label "Rider Error"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPa9e87388_8fe0_4dc5_aaf1_ae15ae4da6f1MGP
+:MGPa9e87388_8fe0_4dc5_aaf1_ae15ae4da6f1MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Front Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPaf1dc47e_c552_4d19_a962_1f67459f9d2bMGP
+:MGPaf1dc47e_c552_4d19_a962_1f67459f9d2bMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Hole Shot Device"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPb6c4e65d_214a_4501_8960_e46bf3af16abMGP
+:MGPb6c4e65d_214a_4501_8960_e46bf3af16abMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP695ba81d_92ad_4f0b_8d79_88bcb3e6d244MGP ;
+                                            rdfs:label "front disc"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPbb5c8b63_3446_424b_87dd_73032146b531MGP
+:MGPbb5c8b63_3446_424b_87dd_73032146b531MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                            rdfs:label "Ride Height Change Function"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPbb78daac_04a5_4ee5_a391_ac3de4de12f4MGP
+:MGPbb78daac_04a5_4ee5_a391_ac3de4de12f4MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000029> ;
+                                            rdfs:label "Racetrack Turn"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPbeaa5dec_601f_4fa0_84b4_7f96606fd8c1MGP
+:MGPbeaa5dec_601f_4fa0_84b4_7f96606fd8c1MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00001061> ;
+                                            rdfs:label "RC213V"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPc6168abb_0558_4509_a4da_b29a85599b5eMGP
+:MGPc6168abb_0558_4509_a4da_b29a85599b5eMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Shocks"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPcac0cb2c_c0e1_4243_a798_b1291f57b6f3MGP
+:MGPcac0cb2c_c0e1_4243_a798_b1291f57b6f3MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP7f7e9823_87a7_4ff1_a923_34671d4ce8e3MGP ;
+                                            rdfs:label "Medium Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd1c89127_f5a3_4f74_b50d_2cf491478875MGP
+:MGPd1c89127_f5a3_4f74_b50d_2cf491478875MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Front_Right_Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd382bfc2_a44b_4592_b747_5c0f9354addfMGP
+:MGPd382bfc2_a44b_4592_b747_5c0f9354addfMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019> ;
+                                            rdfs:label "Track Condition"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd56528af_bf3e_4f27_b155_739aaf3bf4f0MGP
+:MGPd56528af_bf3e_4f27_b155_739aaf3bf4f0MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP724a9aab_ca16_4267_8017_c1f3f10db0c4MGP ;
+                                            rdfs:label "Monobloc Finned Aluminum GP4 Brembo Caliper"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd5b2b9f0_e579_41d4_adff_9ec4cea60eabMGP
+:MGPd5b2b9f0_e579_41d4_adff_9ec4cea60eabMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000723>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Gear Shift Pedal"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd5fb56cd_6d39_411d_8857_4e64fa3e1592MGP
+:MGPd5fb56cd_6d39_411d_8857_4e64fa3e1592MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Back Left Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPdc911a27_e85b_442b_9da7_dce0267f3cf6MGP
+:MGPdc911a27_e85b_442b_9da7_dce0267f3cf6MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000024> ;
+                                            rdfs:label "Front_Left_Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPe169e738_9845_4d7d_a5a9_5ec4e5625246MGP
+:MGPe169e738_9845_4d7d_a5a9_5ec4e5625246MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP7e87105c_1fba_4b19_aa25_30f9cee27be2MGP ;
+                                            rdfs:label "Tyre Tread"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPe52df602_50d2_4323_8cf0_020d5945c37cMGP
+:MGPe52df602_50d2_4323_8cf0_020d5945c37cMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom :MGP0336b4ba_eee4_4ec0_a62f_222c6cc19f17MGP
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000249> ;
+                                            rdfs:label "Chain"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPe5ba6b0d_0b53_4f8e_bb34_11d10a0f5be5MGP
+:MGPe5ba6b0d_0b53_4f8e_bb34_11d10a0f5be5MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Ride Height Device"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPe836ebe7_ed37_48c5_bea4_4cfbe4b772edMGP
+:MGPe836ebe7_ed37_48c5_bea4_4cfbe4b772edMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000441> ;
+                                            rdfs:label "Tyre Tempurature"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPeb795bcd_4371_4706_91f8_93b49df40630MGP
+:MGPeb795bcd_4371_4706_91f8_93b49df40630MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000723>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Clutch Lever"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPeba29c2a_c78d_4999_84e8_ba1ac29c37a3MGP
+:MGPeba29c2a_c78d_4999_84e8_ba1ac29c37a3MGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                            rdfs:label "Loss of Traction"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPef0642be_c800_461c_b66d_aa5c5c8fdb3cMGP
+:MGPef0642be_c800_461c_b66d_aa5c5c8fdb3cMGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000877> ;
+                                            rdfs:label "Front Brake Handle"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPf28409ee_2da5_45eb_9bd7_cda2fa2361adMGP
+:MGPf28409ee_2da5_45eb_9bd7_cda2fa2361adMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Fairing"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP
+:MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP rdf:type owl:Class ;
+                                            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                  owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                ] ;
+                                            rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                            rdfs:label "Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPfa1a4f0a_5f7b_4bef_856b_b36b3bc006dfMGP
+:MGPfa1a4f0a_5f7b_4bef_856b_b36b3bc006dfMGP rdf:type owl:Class ;
+                                            rdfs:subClassOf :MGP695ba81d_92ad_4f0b_8d79_88bcb3e6d244MGP ;
+                                            rdfs:label "rear disc"@en .
+
+
+###  https://www.commoncoreontologies.org/ont00000005
+<https://www.commoncoreontologies.org/ont00000005> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process in which at least one Agent plays a causative role."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000047
+<https://www.commoncoreontologies.org/ont00000047> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000598> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Flow Control Valve"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Valve that is designed to regulate the flow or Pressure of a fluid."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "Flow Control Valves are often more complex than a simple Valve and typically include an Actuator that is capable of automatically adjusting the state of the valve in response to signals from a connected Sensor or Controller."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Flow_control_valve&oldid=1013438085"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000056
+<https://www.commoncoreontologies.org/ont00000056> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000210> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Reaction Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Reaction Motor"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Engine that provides propulsion by expelling Reaction Mass."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Reaction_engine&oldid=1046981784"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000083
+<https://www.commoncoreontologies.org/ont00000083> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000035> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Process Ending"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process Boundary that occupies a Zero-Dimensional Temporal Region that is the ending instant of the One-Dimensional Temporal Region that the Process, of which the Process Boundary is a part, occupies."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000086
+<https://www.commoncoreontologies.org/ont00000086> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000723> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Autopilot System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Autopilot"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Vehicle Control System that is designed to enable some Agent to control the trajectory of a Vehicle without constant 'hands-on' control."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Autopilot&oldid=1063382206"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000095
+<https://www.commoncoreontologies.org/ont00000095> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Control Surface"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to deflect air, water, or another medium around its surface in order to change the Attitude of a Vehicle by rotating the Vehicle on one or more of its Axes of Rotation."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Flight_control_surfaces&oldid=1019271264"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000098
+<https://www.commoncoreontologies.org/ont00000098> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Electrical Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized during events in which a Material Artifact is used to perform a process involving electrical power."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000111
+<https://www.commoncoreontologies.org/ont00000111> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Air Inlet"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Air Intake"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Fluid Control Artifact that consists of an opening that is designed to capture and direct the flow of air into the system it is part of."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000116
+<https://www.commoncoreontologies.org/ont00000116> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000256> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Pump"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Fluid Control Artifact that is designed to impart motion to a portion of fluid to transport it within a system through the use of mechanical action."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000197
+<https://www.commoncoreontologies.org/ont00000197> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000035> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Process Beginning"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process Boundary that occupies a Zero-Dimensional Temporal Region that is the starting instant of the One-Dimensional Temporal Region that the Process, of which the Process Boundary is a part, occupies."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000210
+<https://www.commoncoreontologies.org/ont00000210> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                         owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                       ] ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Motor"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to convert one form of energy into mechanical energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Engine&oldid=1063879193"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000228
+<https://www.commoncoreontologies.org/ont00000228> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000005> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Planned Act"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Intentional Act"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act in which at least one Agent plays a causative role and which is prescribed by some Prescriptive Information Content Entity held by at least one of the Agents."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000249
+<https://www.commoncoreontologies.org/ont00000249> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Shaft"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to rotate and transmit Torque, Power, or Rotational Motion from one machine element to another."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> "A Shaft is usually used to connect other components of a drive train that cannot be connected directly either because of the distance between them or the need to allow for relative movement between those components."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Shaft&oldid=1023963656"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000256
+<https://www.commoncoreontologies.org/ont00000256> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Fluid Control Artifact"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to manipulate the flow of a fluid (i.e. a liquid or a gas)."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000318
+<https://www.commoncoreontologies.org/ont00000318> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000016> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Disease"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "http://purl.obolibrary.org/obo/OGMS_0000031" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000342
+<https://www.commoncoreontologies.org/ont00000342> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                         owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                       ] ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Brake"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to inhibit the Vehicle's Motion by absorbing energy from a moving system."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Brake&oldid=1047693009"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000348
+<https://www.commoncoreontologies.org/ont00000348> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Filter"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that bears a Filter Function."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000397
+<https://www.commoncoreontologies.org/ont00000397> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                         owl:someValuesFrom <https://www.commoncoreontologies.org/ont00000210>
+                                                                       ] ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Combustion Chamber"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Burner"@en ,
+                                                                                                  "Combustor"@en ,
+                                                                                                  "Flame Holder"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to wholly or partially bound an internal Site where a Combustion process is intended to occur."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000409
+<https://www.commoncoreontologies.org/ont00000409> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000742> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Spark Ignition System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Ignition System that is designed to produce a spark in order to initiate an Ignition process."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000441
+<https://www.commoncoreontologies.org/ont00000441> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000019> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Temperature"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Quality that inheres in a bearer in virtue of its thermal energy."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/QualityOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000448
+<https://www.commoncoreontologies.org/ont00000448> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Motion Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized in a process in which an entity changes its position with respect to time."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/wiki/Motion_(physics)" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000513
+<https://www.commoncoreontologies.org/ont00000513> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000566> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act of Tool Use"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act of Artifact Employment in which some Agent uses some Tool."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000515
+<https://www.commoncoreontologies.org/ont00000515> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000566> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act of Vehicle Use"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act of Artifact Employment in which some Agent uses some Vehicle."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000546
+<https://www.commoncoreontologies.org/ont00000546> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000005> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Unplanned Act"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Unintentional Act"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act in which at least one Agent plays a causative role and which is not prescribed by some Objective held by any of the Agents."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000566
+<https://www.commoncoreontologies.org/ont00000566> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act of Artifact Employment"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Planned Act of using a Material Artifact."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000598
+<https://www.commoncoreontologies.org/ont00000598> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000256> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Valve"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Fluid Control Artifact that is designed to regulate, direct, or control the flow of fluid by opening, closing, or partially obstructing the fluid from moving along a passageway."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Valve&oldid=1048906126"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000723
+<https://www.commoncoreontologies.org/ont00000723> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Vehicle Control System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Control System that is designed to enable some Agent to control some Vehicle."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000742
+<https://www.commoncoreontologies.org/ont00000742> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Ignition System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to produce an Ignition process."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000877
+<https://www.commoncoreontologies.org/ont00000877> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000723> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Brake Control System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Vehicle Control System that is designed to control the process of braking with the aim of preventing rolling, skidding, and hydroplaning."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000963
+<https://www.commoncoreontologies.org/ont00000963> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000256> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Fuel Transfer System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Fluid Control Artifact that is designed to facilitate the transfer of some Portion of Fuel from the Fuel Tank for use in some Engine."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000978
+<https://www.commoncoreontologies.org/ont00000978> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000003> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Cause"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process that is the cause of or one of the causes of some other Process."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000981
+<https://www.commoncoreontologies.org/ont00000981> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act of Portion of Material Consumption"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act of Artifact Employment in which a Portion of Material is expended."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00000995
+<https://www.commoncoreontologies.org/ont00000995> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Material Artifact"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that was designed by some Agent to realize a certain Function."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001006
+<https://www.commoncoreontologies.org/ont00001006> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000023> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Operator Role"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Role that inheres in an Agent by virtue of that Agent's responsibilities to operate or control some Material Artifact."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#example> "the role of driving a car" ,
+                                                                                                 "the role of flying an airplane" ,
+                                                                                                 "the role of operating a crane" ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001017
+<https://www.commoncoreontologies.org/ont00001017> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000040> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Agent"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Entity that bears an Agent Capability."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "Schlosser, Markus, \"Agency\", The Stanford Encyclopedia of Philosophy (Winter 2019 Edition), Edward N. Zalta (ed.), available at: https://plato.stanford.edu/archives/win2019/entries/agency/"@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/AgentOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001019
+<https://www.commoncoreontologies.org/ont00001019> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000723> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Steering Control System"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Vehicle Control System that is designed to control the direction some Vehicle is traveling."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001027
+<https://www.commoncoreontologies.org/ont00001027> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000095> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Trim Tab"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Control Surface that is designed to counteract hydro-, aerodynamic, or other forces in order to stabilize the Vehicle it is part of in the desired Attitude."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Trim_tab&oldid=1054550485"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001053
+<https://www.commoncoreontologies.org/ont00001053> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000228> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Act of Collision"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Act of Location Change involving the movement of one object such that it collides with another object."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/EventOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001061
+<https://www.commoncoreontologies.org/ont00001061> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Motorcycle"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#altLabel> "Motorbike"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Ground Motor Vehicle that is designed to transport a very small number of passengers (usually 1 or 2) while traveling on two or three tired wheels."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Motorcycle&oldid=1063743553"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001070
+<https://www.commoncoreontologies.org/ont00001070> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Fluid Control Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized in processes in which some Material Artifact is used to control the direction or flow of some fluid."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001083
+<https://www.commoncoreontologies.org/ont00001083> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000056> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Air-Breathing Combustion Engine"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Reaction Engine that functions by drawing a continuous stream of air into and through the Engine where it is compressed, mixed with a Portion of Fuel, ignited, and then expelled as exhaust gas."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Engine&oldid=1063879193"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001134
+<https://www.commoncoreontologies.org/ont00001134> rdf:type owl:Class ;
+                                                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <http://purl.obolibrary.org/obo/BFO_0000176> ;
+                                                                         owl:someValuesFrom <https://www.commoncoreontologies.org/ont00001061>
+                                                                       ] ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Vehicle Frame"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to be the main supporting structure of some Vehicle."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Vehicle_frame&oldid=1054003530"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001253
+<https://www.commoncoreontologies.org/ont00001253> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Fuel Artifact Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized in processes in which a Portion of Fuel is reacted with other substances in order to release chemical or nuclear energy to be used for heat or for work."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Fuel&oldid=1063590518"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001282
+<https://www.commoncoreontologies.org/ont00001282> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000598> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Hydraulic Valve"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Valve that is designed to regulate, direct, or control the flow of a liquid by opening, closing, or partially obstructing various passageways."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001754> "https://en.wikipedia.org/w/index.php?title=Power_transfer_unit&oldid=1002682083"^^xsd:anyURI ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00001999
+<https://www.commoncoreontologies.org/ont00001999> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000034> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Filter Function"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "An Artifact Function that is realized in a process where entities of a specific type or which have specified properties enter it or pass through it."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#scopeNote> """Although its basic function remains the same, a Filter can be used in 2 different ways:
+(1) to allow only the desired entities to pass through (e.g. removing dirt from engine oil); or
+(2) to allow everything except the desired entities to pass through (e.g. panning for gold)."""@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00002068
+<https://www.commoncoreontologies.org/ont00002068> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <https://www.commoncoreontologies.org/ont00000995> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Display Instrument"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Material Artifact that is designed to bear an Image Display Artifact Function."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+###  https://www.commoncoreontologies.org/ont00002075
+<https://www.commoncoreontologies.org/ont00002075> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://purl.obolibrary.org/obo/BFO_0000015> ;
+                                                   <http://purl.obolibrary.org/obo/IAO_0000412> "https://www.commoncoreontologies.org/2026-04-04/CommonCoreOntologiesMerged" ;
+                                                   rdfs:label "Sensing Process"@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A Process that realizes a Sensor Function or Sensor Role."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/ArtifactOntology"^^xsd:anyURI .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_03a74b24_27b0_4085_ad9d_7b97fc915a85MPO
+MGP:OWLNamedIndividual_03a74b24_27b0_4085_ad9d_7b97fc915a85MPO rdf:type owl:NamedIndividual ,
+                                                                        :MGP3310576a_5176_4e4e_87a8_5646b9308375MGP ,
+                                                                        :MGP9f880362_df06_4556_bcc8_027ff7062eb4MGP ;
+                                                               rdfs:label "Catalunya Lap 001 accident"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_1f872fc7_970a_40f5_a0f7_ff38b59f29e9MPO
+MGP:OWLNamedIndividual_1f872fc7_970a_40f5_a0f7_ff38b59f29e9MPO rdf:type owl:NamedIndividual ,
+                                                                        <https://www.commoncoreontologies.org/ont00001017> ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000056> MGP:OWLNamedIndividual_03a74b24_27b0_4085_ad9d_7b97fc915a85MPO ,
+                                                                                                            MGP:OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000196> :MGPd0d7d64c_efa2_4027_94fe_706307c6760aMGP ;
+                                                               <https://www.commoncoreontologies.org/ont00001813> MGP:OWLNamedIndividual_7e2ae45d_02cd_4188_a623_0bea76075c85MPO ;
+                                                               rdfs:label "Johann Zarco"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_4e4a2a9d_9fb2_4903_86cd_2c2c6e1f45a4MPO
+MGP:OWLNamedIndividual_4e4a2a9d_9fb2_4903_86cd_2c2c6e1f45a4MPO rdf:type owl:NamedIndividual ,
+                                                                        :MGPbb78daac_04a5_4ee5_a391_ac3de4de12f4MGP ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000183> MGP:OWLNamedIndividual_03a74b24_27b0_4085_ad9d_7b97fc915a85MPO ;
+                                                               rdfs:label "Catalunya Turn 001"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO
+MGP:OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO rdf:type owl:NamedIndividual ,
+                                                                        :MGP775ce641_9491_4cad_840c_e6a75c14b447MGP ;
+                                                               rdfs:label "Catalunya Grand Prix"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_6d539b6d_ddc6_4e2d_a7ef_872f48d5b397MPO
+MGP:OWLNamedIndividual_6d539b6d_ddc6_4e2d_a7ef_872f48d5b397MPO rdf:type owl:NamedIndividual ,
+                                                                        <https://www.commoncoreontologies.org/ont00001017> ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000056> MGP:OWLNamedIndividual_03a74b24_27b0_4085_ad9d_7b97fc915a85MPO ,
+                                                                                                            MGP:OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO ;
+                                                               <https://www.commoncoreontologies.org/ont00001813> :MGP46fc208a_90be_490b_ad1e_91cbfe4d0f3fMGP ;
+                                                               rdfs:label "Luca Marini"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_7e2ae45d_02cd_4188_a623_0bea76075c85MPO
+MGP:OWLNamedIndividual_7e2ae45d_02cd_4188_a623_0bea76075c85MPO rdf:type owl:NamedIndividual ,
+                                                                        :MGPbeaa5dec_601f_4fa0_84b4_7f96606fd8c1MGP ;
+                                                               rdfs:label "Castrol RC213V"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_b7178d34_8eb2_4e50_9c79_562dd17ab52fMPO
+MGP:OWLNamedIndividual_b7178d34_8eb2_4e50_9c79_562dd17ab52fMPO rdf:type owl:NamedIndividual ,
+                                                                        :MGP2551289c_b6f8_4c8e_8646_6cf8bac212feMGP ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000132> MGP:OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO ;
+                                                               rdfs:label "Catalunya GP Lap 001"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP#OWLNamedIndividual_da1ee5d1_6e21_4610_95f4_53524201c9cdMPO
+MGP:OWLNamedIndividual_da1ee5d1_6e21_4610_95f4_53524201c9cdMPO rdf:type owl:NamedIndividual ,
+                                                                        :MGP560420d0_0c5c_4523_bb20_9107853bf927MGP ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000183> MGP:OWLNamedIndividual_54b6f376_bd53_4cd8_ba64_3aeb63e8178bMPO ;
+                                                               <http://purl.obolibrary.org/obo/BFO_0000196> :MGP6595999a_4d73_4783_90c3_805049a199c0MGP ,
+                                                                                                            :MGPa01d678e_110e_4465_9c47_2e6bebcd1eeeMGP ;
+                                                               rdfs:label "Catalunya"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP1e3a15a8_748c_4c61_b61f_0b6e5f206bf3MGP
+:MGP1e3a15a8_748c_4c61_b61f_0b6e5f206bf3MGP rdf:type owl:NamedIndividual ,
+                                                     :MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000176> MGP:OWLNamedIndividual_7e2ae45d_02cd_4188_a623_0bea76075c85MPO ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000196> :MGPceeb8f24_cbff_4deb_ba82_4f0434afb0caMGP ,
+                                                                                         :MGPed90dc97_1ae0_4694_a69d_701af0793498MGP ;
+                                            rdfs:label "Castrol RC213V Front Tire"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP46fc208a_90be_490b_ad1e_91cbfe4d0f3fMGP
+:MGP46fc208a_90be_490b_ad1e_91cbfe4d0f3fMGP rdf:type owl:NamedIndividual ,
+                                                     :MGPbeaa5dec_601f_4fa0_84b4_7f96606fd8c1MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000196> :MGP7050ada3_11a8_459b_bc4f_7c206815792dMGP ;
+                                            rdfs:label "LCR RC213V 001"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP52a39dc3_f5b0_4320_af90_547e3fd9129cMGP
+:MGP52a39dc3_f5b0_4320_af90_547e3fd9129cMGP rdf:type owl:NamedIndividual ,
+                                                     :MGPeba29c2a_c78d_4999_84e8_ba1ac29c37a3MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000132> :MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP ;
+                                            rdfs:label "Loss of Traction 001"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP6595999a_4d73_4783_90c3_805049a199c0MGP
+:MGP6595999a_4d73_4783_90c3_805049a199c0MGP rdf:type owl:NamedIndividual ,
+                                                     :MGP99623dc1_858b_41fa_9595_7dfb9793c002MGP ;
+                                            rdfs:label "Warm Condition"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGP7050ada3_11a8_459b_bc4f_7c206815792dMGP
+:MGP7050ada3_11a8_459b_bc4f_7c206815792dMGP rdf:type owl:NamedIndividual ,
+                                                     :MGP1b2507d2_0f3c_4857_ad22_e069cca1b306MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000054> :MGP52a39dc3_f5b0_4320_af90_547e3fd9129cMGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000056> :MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP ;
+                                            rdfs:label "Marini Dirty Air"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPa01d678e_110e_4465_9c47_2e6bebcd1eeeMGP
+:MGPa01d678e_110e_4465_9c47_2e6bebcd1eeeMGP rdf:type owl:NamedIndividual ,
+                                                     :MGPd382bfc2_a44b_4592_b747_5c0f9354addfMGP ;
+                                            rdfs:label "Dry Condition"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPbc94a0df_e65c_4de3_935c_4cf85a25fbeeMGP
+:MGPbc94a0df_e65c_4de3_935c_4cf85a25fbeeMGP rdf:type owl:NamedIndividual ,
+                                                     :MGPf3eba4a6_ea8b_4bf5_a9ff_8119fad5bb77MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000176> MGP:OWLNamedIndividual_7e2ae45d_02cd_4188_a623_0bea76075c85MPO ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000196> :MGPceeb8f24_cbff_4deb_ba82_4f0434afb0caMGP ,
+                                                                                         :MGPed90dc97_1ae0_4694_a69d_701af0793498MGP ;
+                                            rdfs:label "Castrol RC213V Rear Tyre"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP
+:MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP rdf:type owl:NamedIndividual ,
+                                                     <https://www.commoncoreontologies.org/ont00000978> ;
+                                            <https://www.commoncoreontologies.org/ont00001819> :MGP52a39dc3_f5b0_4320_af90_547e3fd9129cMGP ,
+                                                                                               :MGPeb17edbf_3967_4926_ac91_1312199014eeMGP ;
+                                            rdfs:label "Catalunya GP Lap 001 accident factor"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPceeb8f24_cbff_4deb_ba82_4f0434afb0caMGP
+:MGPceeb8f24_cbff_4deb_ba82_4f0434afb0caMGP rdf:type owl:NamedIndividual ,
+                                                     :MGP58a1420f_e04e_4576_8bb0_e76a71733b12MGP ;
+                                            rdfs:label "Minimal"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPd0d7d64c_efa2_4027_94fe_706307c6760aMGP
+:MGPd0d7d64c_efa2_4027_94fe_706307c6760aMGP rdf:type owl:NamedIndividual ,
+                                                     :MGP5bf0ae93_be9d_43ec_bc86_4cad9e305cf3MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000056> :MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP ;
+                                            rdfs:label "Prior Foot Injury"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPeb17edbf_3967_4926_ac91_1312199014eeMGP
+:MGPeb17edbf_3967_4926_ac91_1312199014eeMGP rdf:type owl:NamedIndividual ,
+                                                     :MGP3310576a_5176_4e4e_87a8_5646b9308375MGP ;
+                                            <http://purl.obolibrary.org/obo/BFO_0000132> :MGPc4e21e6e_1170_4037_a16d_541b0a1b94f6MGP ;
+                                            rdfs:label "Collision With Marini"@en .
+
+
+###  http://www.semanticweb.org/erichapsion/ontologies/HondaMotoGP:MGPed90dc97_1ae0_4694_a69d_701af0793498MGP
+:MGPed90dc97_1ae0_4694_a69d_701af0793498MGP rdf:type owl:NamedIndividual ,
+                                                     :MGPe836ebe7_ed37_48c5_bea4_4cfbe4b772edMGP ;
+                                            rdfs:label "Cold"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
